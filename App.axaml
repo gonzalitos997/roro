@@ -7,4 +7,16 @@
     <Application.Styles>
         <FluentTheme />
     </Application.Styles>
+
+    <Application.Resources>
+        <SolidColorBrush x:Key="PrimaryText">#CFCFCF</SolidColorBrush>
+        <SolidColorBrush x:Key="PrimaryBackground">#14172D</SolidColorBrush>
+        <LinearGradientBrush x:Key="PrimaryBackGroundGradient" StartPoint="0,0" EndPoint="100%, 0%">
+            <GradientStop Color="#111214" Offset="0"/>
+            <GradientStop Color="#151E3E" Offset="1"/>
+        </LinearGradientBrush>
+
+        <SolidColorBrush x:Key="PrimaryHoverBackground">#333B5A</SolidColorBrush>
+        <SolidColorBrush x:Key="PrimaryHoverForeground">#White</SolidColorBrush>
+    </Application.Resources>
 </Application>

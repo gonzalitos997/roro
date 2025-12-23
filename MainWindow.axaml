@@ -2,8 +2,185 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        xmlns:svg="clr-namespace:Avalonia.Svg.Skia;assembly=Avalonia.Svg.Skia"
+        mc:Ignorable="d" d:DesignWidth="900" d:DesignHeight="600"
         x:Class="BatchProcess3.MainWindow"
-        Title="BatchProcess3">
-    Welcome to Avalonia!
+        Title="Chapter 1 - Images and Buttons"
+        Width="900" Height="600"
+        WindowStartupLocation="CenterScreen">
+    
+    <Grid Background="{DynamicResource PrimaryBackground}" ColumnDefinitions="250, *">
+        
+        <!-- Sidebar -->
+        <Border Grid.Column="0" 
+                Padding="20" 
+                Background="{DynamicResource PrimaryBackGroundGradient}">
+            <Grid RowDefinitions="Auto, *, Auto">
+                
+                <!-- Header -->
+                <StackPanel Grid.Row="0" Spacing="10">
+                    <TextBlock Text="Avalonia UI" 
+                               FontSize="28" 
+                               FontWeight="Bold"
+                               Foreground="{DynamicResource PrimaryText}"
+                               HorizontalAlignment="Center"/>
+                    <TextBlock Text="Images &amp; Buttons" 
+                               FontSize="14" 
+                               Foreground="#999"
+                               HorizontalAlignment="Center"
+                               Margin="0,0,0,20"/>
+                </StackPanel>
+                
+                <!-- Navigation Buttons -->
+                <StackPanel Grid.Row="1" Spacing="10" VerticalAlignment="Top" Margin="0,20,0,0">
+                    
+                    <!-- Home Button with Icon -->
+                    <Button Height="45">
+                        <StackPanel Orientation="Horizontal" Spacing="12">
+                            <svg:Svg Path="/Assets/Icons/home.svg" 
+                                     Width="20" Height="20"/>
+                            <TextBlock Text="Home" 
+                                       VerticalAlignment="Center"
+                                       FontSize="14"/>
+                        </StackPanel>
+                    </Button>
+                    
+                    <!-- User Button with Icon -->
+                    <Button Height="45">
+                        <StackPanel Orientation="Horizontal" Spacing="12">
+                            <svg:Svg Path="/Assets/Icons/user.svg" 
+                                     Width="20" Height="20"/>
+                            <TextBlock Text="Profile" 
+                                       VerticalAlignment="Center"
+                                       FontSize="14"/>
+                        </StackPanel>
+                    </Button>
+                    
+                    <!-- More Button with Icon -->
+                    <Button Height="45">
+                        <StackPanel Orientation="Horizontal" Spacing="12">
+                            <svg:Svg Path="/Assets/Icons/more.svg" 
+                                     Width="20" Height="20"/>
+                            <TextBlock Text="More" 
+                                       VerticalAlignment="Center"
+                                       FontSize="14"/>
+                        </StackPanel>
+                    </Button>
+                    
+                </StackPanel>
+                
+                <!-- Footer -->
+                <TextBlock Grid.Row="2" 
+                           Text="AngelSix Tutorial" 
+                           FontSize="11"
+                           Foreground="#666"
+                           HorizontalAlignment="Center"/>
+            </Grid>
+        </Border>
+        
+        <!-- Main Content -->
+        <Grid Grid.Column="1" Margin="40">
+            <StackPanel Spacing="30" VerticalAlignment="Center" HorizontalAlignment="Center">
+                
+                <!-- Title -->
+                <TextBlock Text="Working with Images &amp; Buttons" 
+                           FontSize="32"
+                           FontWeight="Bold"
+                           Foreground="{DynamicResource PrimaryText}"
+                           HorizontalAlignment="Center"/>
+                
+                <!-- Description -->
+                <TextBlock Text="Chapter 1: Learn how to use SVG images and create beautiful buttons in Avalonia UI"
+                           FontSize="14"
+                           Foreground="#AAA"
+                           HorizontalAlignment="Center"
+                           TextWrapping="Wrap"
+                           TextAlignment="Center"
+                           MaxWidth="500"/>
+                
+                <!-- Icon Display -->
+                <Border Background="{DynamicResource PrimaryBackGroundGradient}"
+                        CornerRadius="12"
+                        Padding="40">
+                    <StackPanel Spacing="20">
+                        <TextBlock Text="Icon Gallery" 
+                                   FontSize="18"
+                                   FontWeight="SemiBold"
+                                   Foreground="{DynamicResource PrimaryText}"
+                                   HorizontalAlignment="Center"/>
+                        
+                        <StackPanel Orientation="Horizontal" 
+                                    Spacing="30" 
+                                    HorizontalAlignment="Center">
+                            
+                            <StackPanel Spacing="8" HorizontalAlignment="Center">
+                                <svg:Svg Path="/Assets/Icons/home.svg" 
+                                         Width="40" Height="40"/>
+                                <TextBlock Text="Home" 
+                                           FontSize="12"
+                                           Foreground="#AAA"
+                                           HorizontalAlignment="Center"/>
+                            </StackPanel>
+                            
+                            <StackPanel Spacing="8" HorizontalAlignment="Center">
+                                <svg:Svg Path="/Assets/Icons/user.svg" 
+                                         Width="40" Height="40"/>
+                                <TextBlock Text="User" 
+                                           FontSize="12"
+                                           Foreground="#AAA"
+                                           HorizontalAlignment="Center"/>
+                            </StackPanel>
+                            
+                            <StackPanel Spacing="8" HorizontalAlignment="Center">
+                                <svg:Svg Path="/Assets/Icons/add.svg" 
+                                         Width="40" Height="40"/>
+                                <TextBlock Text="Add" 
+                                           FontSize="12"
+                                           Foreground="#AAA"
+                                           HorizontalAlignment="Center"/>
+                            </StackPanel>
+                            
+                            <StackPanel Spacing="8" HorizontalAlignment="Center">
+                                <svg:Svg Path="/Assets/Icons/remove.svg" 
+                                         Width="40" Height="40"/>
+                                <TextBlock Text="Remove" 
+                                           FontSize="12"
+                                           Foreground="#AAA"
+                                           HorizontalAlignment="Center"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+                
+                <!-- Action Buttons -->
+                <StackPanel Orientation="Horizontal" Spacing="15" HorizontalAlignment="Center">
+                    
+                    <Button Width="140" Height="45"
+                            Background="#4CAF50"
+                            Foreground="White">
+                        <StackPanel Orientation="Horizontal" Spacing="8">
+                            <svg:Svg Path="/Assets/Icons/add.svg" 
+                                     Width="18" Height="18"/>
+                            <TextBlock Text="Add Item" 
+                                       VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                    
+                    <Button Width="140" Height="45"
+                            Background="#F44336"
+                            Foreground="White">
+                        <StackPanel Orientation="Horizontal" Spacing="8">
+                            <svg:Svg Path="/Assets/Icons/remove.svg" 
+                                     Width="18" Height="18"/>
+                            <TextBlock Text="Remove" 
+                                       VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                    
+                </StackPanel>
+                
+            </StackPanel>
+        </Grid>
+        
+    </Grid>
 </Window>
