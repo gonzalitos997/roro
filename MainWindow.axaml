@@ -2,8 +2,62 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:BatchProcess3.ViewModels"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="BatchProcess3.MainWindow"
-        Title="BatchProcess3">
-    Welcome to Avalonia!
+        x:DataType="vm:MainWindowViewModel"
+        Title="BatchProcess3 - MVVM Chapter 7"
+        Width="600" Height="400"
+        WindowStartupLocation="CenterScreen">
+
+    <Design.DataContext>
+        <vm:MainWindowViewModel />
+    </Design.DataContext>
+
+    <Grid RowDefinitions="Auto,*,Auto" Margin="20">
+        
+        <!-- Header -->
+        <TextBlock Grid.Row="0" 
+                   Text="{Binding WelcomeMessage}"
+                   FontSize="24"
+                   FontWeight="Bold"
+                   HorizontalAlignment="Center"
+                   Margin="0,0,0,20"/>
+
+        <!-- Center Content -->
+        <StackPanel Grid.Row="1" 
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    Spacing="20">
+            
+            <TextBlock Text="{Binding Counter, StringFormat='Counter: {0}'}"
+                       FontSize="32"
+                       HorizontalAlignment="Center"/>
+
+            <StackPanel Orientation="Horizontal" 
+                        Spacing="10"
+                        HorizontalAlignment="Center">
+                
+                <Button Content="Increment"
+                        Command="{Binding IncrementCommand}"
+                        Width="120"
+                        Height="40"/>
+
+                <Button Content="Reset"
+                        Command="{Binding ResetCommand}"
+                        Width="120"
+                        Height="40"/>
+            </StackPanel>
+
+        </StackPanel>
+
+        <!-- Footer -->
+        <TextBlock Grid.Row="2"
+                   Text="AngelSix - Avalonia UI Real World - Chapter 7: MVVM Pattern"
+                   FontSize="12"
+                   Foreground="Gray"
+                   HorizontalAlignment="Center"/>
+        
+    </Grid>
+
 </Window>
