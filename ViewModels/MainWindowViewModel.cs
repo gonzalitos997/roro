@@ -10,8 +10,10 @@ public class MainWindowViewModel : ViewModelBase
 {
     #region Private Fields
 
-    private string _welcomeMessage = "Welcome to Avalonia MVVM!";
+    private string _welcomeMessage = "Welcome to Avalonia MVVM with Custom Themes!";
     private int _counter = 0;
+    private string _currentThemeText = "Light Theme";
+    private readonly ThemeManager _themeManager;
 
     #endregion
 
@@ -35,6 +37,15 @@ public class MainWindowViewModel : ViewModelBase
         set => SetProperty(ref _counter, value);
     }
 
+    /// <summary>
+    /// Gets or sets the current theme text
+    /// </summary>
+    public string CurrentThemeText
+    {
+        get => _currentThemeText;
+        set => SetProperty(ref _currentThemeText, value);
+    }
+
     #endregion
 
     #region Commands
@@ -49,15 +60,29 @@ public class MainWindowViewModel : ViewModelBase
     /// </summary>
     public ICommand ResetCommand { get; }
 
+    /// <summary>
+    /// Command to toggle theme
+    /// </summary>
+    public ICommand ToggleThemeCommand { get; }
+
     #endregion
 
     #region Constructor
 
     public MainWindowViewModel()
     {
+        _themeManager = ThemeManager.Instance;
+        
         // Initialize commands
         IncrementCommand = new RelayCommand(OnIncrement);
         ResetCommand = new RelayCommand(OnReset, CanReset);
+        ToggleThemeCommand = new RelayCommand(OnToggleTheme);
+
+        // Subscribe to theme changes
+        _themeManager.ThemeChanged += OnThemeChanged;
+        
+        // Set initial theme text
+        UpdateThemeText();
     }
 
     #endregion
@@ -79,6 +104,28 @@ public class MainWindowViewModel : ViewModelBase
     private bool CanReset(object? parameter)
     {
         return Counter > 0;
+    }
+
+    private void OnToggleTheme(object? parameter)
+    {
+        _themeManager.ToggleTheme();
+    }
+
+    #endregion
+
+    #region Event Handlers
+
+    private void OnThemeChanged(object? sender, ThemeMode newTheme)
+    {
+        UpdateThemeText();
+        WelcomeMessage = $"Theme changed to {newTheme}!";
+    }
+
+    private void UpdateThemeText()
+    {
+        CurrentThemeText = _themeManager.CurrentTheme == ThemeMode.Light 
+            ? "🌞 Light Theme" 
+            : "🌙 Dark Theme";
     }
 
     #endregion
